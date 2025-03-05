@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/calls_screen.dart';
 import 'package:whatsapp/chats_list_view.dart';
+import 'package:whatsapp/chats_screen.dart';
 import 'package:whatsapp/custom_colors.dart';
-import 'package:whatsapp/custom_top_app_bar.dart';
+import 'package:whatsapp/profile_dialoge.dart';
+import 'package:whatsapp/status_card.dart';
+import 'package:whatsapp/updates_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,40 +37,57 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 1;
+
+  void _updateIndex(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.sizeOf(context).width;
-    final double height = MediaQuery.sizeOf(context).height;
-
     return Scaffold(
-      appBar: CustomTopAppBar(
-        title: widget.title,
-        height: height,
-        width: width,
-      ),
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            label: "Chats",
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _updateIndex,
+        backgroundColor: Colors.white,
+        surfaceTintColor: const Color(0xFFCECECE),
+        destinations: [
+          NavigationDestination(
             icon: Icon(Icons.chat_outlined),
-            activeIcon: Icon(Icons.chat),
+            selectedIcon: Icon(Icons.chat, color: CustomColors.clrGreen),
+            label: "Chats",
           ),
-          BottomNavigationBarItem(
-            label: "Updates",
+          NavigationDestination(
             icon: Icon(Icons.update_outlined),
-            activeIcon: Icon(Icons.update),
-          ),
+            selectedIcon: Icon(Icons.update, color: CustomColors.clrGreen),
 
-          BottomNavigationBarItem(
-            label: "Calls",
+            label: "Updates",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.group_outlined),
+            selectedIcon: Icon(Icons.group, color: CustomColors.clrGreen),
+
+            label: "Communities",
+          ),
+          NavigationDestination(
             icon: Icon(Icons.call_outlined),
-            activeIcon: Icon(Icons.call),
+            selectedIcon: Icon(Icons.call, color: CustomColors.clrGreen),
+            label: "Calls",
           ),
         ],
       ),
       body: Center(
-        child: ChatsListView(),
+        child:
+            <Widget>[
+              ChatsScreen(title: widget.title),
+              UpdatesScreen(title: "Updates"),
+              ChatsListView(),
+              CallsScreen(),
+            ][_selectedIndex],
+
         // child: ProfileDialoge(imagePath: "assets/images/person.png"),
       ),
     );

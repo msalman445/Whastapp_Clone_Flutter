@@ -1,12 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 class Chat {
   String profileImagePath;
   String senderName;
   String? sentDate;
   String? lastMessage;
   String? noOfMessages;
+  IconData? callStatusIcon;
+  IconData? callTypeIcon;
+  Color? callStatusIconColor;
+  Color? noOfMessagesColor;
 
   Chat({
     required this.profileImagePath,
@@ -14,7 +20,15 @@ class Chat {
     this.sentDate,
     this.lastMessage,
     this.noOfMessages,
-  });
+    this.callStatusIcon,
+    this.callTypeIcon,
+    this.callStatusIconColor,
+    this.noOfMessagesColor = Colors.transparent,
+  }) : assert(
+         ((callTypeIcon != null) &&
+                 ((noOfMessages == null) && (sentDate == null))) ||
+             (callTypeIcon == null),
+       );
 
   Chat copyWith({
     String? profileImagePath,
@@ -22,6 +36,10 @@ class Chat {
     String? sentDate,
     String? lastMessage,
     String? noOfMessages,
+    IconData? callStatusIcon,
+    IconData? callTypeIcon,
+    Color? callStatusIconColor,
+    Color? noOfMessagesColor,
   }) {
     return Chat(
       profileImagePath: profileImagePath ?? this.profileImagePath,
@@ -29,6 +47,10 @@ class Chat {
       sentDate: sentDate ?? this.sentDate,
       lastMessage: lastMessage ?? this.lastMessage,
       noOfMessages: noOfMessages ?? this.noOfMessages,
+      callStatusIcon: callStatusIcon ?? this.callStatusIcon,
+      callTypeIcon: callTypeIcon ?? this.callTypeIcon,
+      callStatusIconColor: callStatusIconColor ?? this.callStatusIconColor,
+      noOfMessagesColor: noOfMessagesColor ?? this.noOfMessagesColor,
     );
   }
 
@@ -39,6 +61,10 @@ class Chat {
       'sentDate': sentDate,
       'lastMessage': lastMessage,
       'noOfMessages': noOfMessages,
+      'callStatusIcon': callStatusIcon?.codePoint,
+      'callTypeIcon': callTypeIcon?.codePoint,
+      'callStatusIconColor': callStatusIconColor?.value,
+      'noOfMessagesColor': noOfMessagesColor?.value,
     };
   }
 
@@ -51,6 +77,28 @@ class Chat {
           map['lastMessage'] != null ? map['lastMessage'] as String : null,
       noOfMessages:
           map['noOfMessages'] != null ? map['noOfMessages'] as String : null,
+      callStatusIcon:
+          map['callStatusIcon'] != null
+              ? IconData(
+                map['callStatusIcon'] as int,
+                fontFamily: 'MaterialIcons',
+              )
+              : null,
+      callTypeIcon:
+          map['callTypeIcon'] != null
+              ? IconData(
+                map['callTypeIcon'] as int,
+                fontFamily: 'MaterialIcons',
+              )
+              : null,
+      callStatusIconColor:
+          map['callStatusIconColor'] != null
+              ? Color(map['callStatusIconColor'] as int)
+              : null,
+      noOfMessagesColor:
+          map['noOfMessagesColor'] != null
+              ? Color(map['noOfMessagesColor'] as int)
+              : null,
     );
   }
 
@@ -61,7 +109,7 @@ class Chat {
 
   @override
   String toString() {
-    return 'Chat(profileImagePath: $profileImagePath, senderName: $senderName, sentDate: $sentDate, lastMessage: $lastMessage, noOfMessages: $noOfMessages)';
+    return 'Chat(profileImagePath: $profileImagePath, senderName: $senderName, sentDate: $sentDate, lastMessage: $lastMessage, noOfMessages: $noOfMessages, callStatusIcon: $callStatusIcon, callTypeIcon: $callTypeIcon, callStatusIconColor: $callStatusIconColor, noOfMessagesColor: $noOfMessagesColor)';
   }
 
   @override
@@ -72,7 +120,11 @@ class Chat {
         other.senderName == senderName &&
         other.sentDate == sentDate &&
         other.lastMessage == lastMessage &&
-        other.noOfMessages == noOfMessages;
+        other.noOfMessages == noOfMessages &&
+        other.callStatusIcon == callStatusIcon &&
+        other.callTypeIcon == callTypeIcon &&
+        other.callStatusIconColor == callStatusIconColor &&
+        other.noOfMessagesColor == noOfMessagesColor;
   }
 
   @override
@@ -81,6 +133,10 @@ class Chat {
         senderName.hashCode ^
         sentDate.hashCode ^
         lastMessage.hashCode ^
-        noOfMessages.hashCode;
+        noOfMessages.hashCode ^
+        callStatusIcon.hashCode ^
+        callTypeIcon.hashCode ^
+        callStatusIconColor.hashCode ^
+        noOfMessagesColor.hashCode;
   }
 }

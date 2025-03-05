@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/chat.dart';
 import 'package:whatsapp/chat_item.dart';
+import 'package:whatsapp/custom_colors.dart';
 
 class ChatsListView extends StatelessWidget {
   const ChatsListView({super.key});
@@ -97,6 +98,7 @@ class ChatsListView extends StatelessWidget {
             lastMessage: lastMessages[index],
             sentDate: dates[index],
             noOfMessages: index <= 3 ? noOfMessagesList[index] : null,
+            noOfMessagesColor: CustomColors.clrGreen,
           ),
         );
       }),

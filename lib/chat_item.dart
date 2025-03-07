@@ -92,11 +92,12 @@ class _ChatItemState extends State<ChatItem> {
 
                             SizedBox(width: 3),
 
-                            Text(
+                            AutoSizeText(
                               (widget.chat.lastMessage!.length > 30
                                   ? "${widget.chat.lastMessage!.substring(0, 20)} ..."
                                   : widget.chat.lastMessage)!,
                               maxLines: 1,
+                              minFontSize: 10,
                               style: messageTextStyle,
                             ),
                           ],
@@ -116,7 +117,11 @@ class _ChatItemState extends State<ChatItem> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         if (widget.chat.sentDate != null)
-                          Text(widget.chat.sentDate!, style: messageTextStyle),
+                          AutoSizeText(
+                            maxLines: 1,
+                            widget.chat.sentDate!,
+                            style: messageTextStyle,
+                          ),
 
                         if (widget.chat.noOfMessages != null)
                           Container(

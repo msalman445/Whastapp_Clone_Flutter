@@ -6,10 +6,12 @@ class UpdatesCallsAppbar extends StatefulWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     required this.isSearchIcon,
+    required this.moreOptions,
   });
 
   final String title;
   final bool isSearchIcon;
+  final Widget moreOptions;
 
   @override
   State<UpdatesCallsAppbar> createState() => _UpdatesCallsAppbarState();
@@ -74,7 +76,8 @@ class _UpdatesCallsAppbarState extends State<UpdatesCallsAppbar> {
                     onPressed: _toggleSearch,
                     icon: Icon(Icons.search),
                   ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+
+                widget.moreOptions,
               ],
     );
   }

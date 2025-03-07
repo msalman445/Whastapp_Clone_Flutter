@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/calls_screen.dart';
 import 'package:whatsapp/chats_list_view.dart';
 import 'package:whatsapp/chats_screen.dart';
+import 'package:whatsapp/communities_screen.dart';
 import 'package:whatsapp/custom_colors.dart';
 import 'package:whatsapp/profile_dialoge.dart';
 import 'package:whatsapp/status_card.dart';
@@ -37,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 3;
 
   void _updateIndex(int index) {
     setState(() {
@@ -84,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             <Widget>[
               ChatsScreen(title: widget.title),
               UpdatesScreen(title: "Updates"),
-              ChatsListView(),
+              CommunitiesScreen(),
               CallsScreen(),
             ][_selectedIndex],
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/chats_pop_up_menu_button.dart';
 import 'package:whatsapp/custom_colors.dart';
 
 class CustomTopAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -35,7 +36,7 @@ class _CustomTopAppBarState extends State<CustomTopAppBar>
       ),
       actions: [
         IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt_outlined)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+        ChatsPopuUpMenuButton(),
       ],
       bottom: PreferredSize(
         preferredSize: Size(widget.width, widget.height * 0.1),

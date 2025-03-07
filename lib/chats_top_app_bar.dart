@@ -51,13 +51,10 @@ class _CustomTopAppBarState extends State<CustomTopAppBar>
 
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   filled: true,
-                  label: Text(
-                    "Ask Meta AI or Search",
-                    maxLines: 1,
-                    style: TextStyle(
-                      color: CustomColors.clrGreyTextSearch,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  hintText: "Ask Meta AI or Search",
+                  hintStyle: TextStyle(
+                    color: CustomColors.clrGreyTextSearch,
+                    fontWeight: FontWeight.w500,
                   ),
 
                   enabledBorder: OutlineInputBorder(

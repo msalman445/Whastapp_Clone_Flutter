@@ -34,6 +34,7 @@ class _UpdatesPopUpMenuState extends State<UpdatesPopUpMenu> {
   Widget build(BuildContext context) {
     return PopupMenuButton(
       initialValue: selectedItem,
+      onSelected: _onItemSelected,
       offset: Offset(0, 40),
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

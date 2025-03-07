@@ -93,7 +93,7 @@ class _ChatItemState extends State<ChatItem> {
                             SizedBox(width: 3),
 
                             AutoSizeText(
-                              (widget.chat.lastMessage!.length > 30
+                              (widget.chat.lastMessage!.length > 25
                                   ? "${widget.chat.lastMessage!.substring(0, 20)} ..."
                                   : widget.chat.lastMessage)!,
                               maxLines: 1,

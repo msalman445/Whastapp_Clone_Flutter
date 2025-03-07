@@ -32,9 +32,6 @@ class CommunitiesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.sizeOf(context).width;
-    final double height = MediaQuery.sizeOf(context).height;
-    final double scaleFactor = (width + height) / 2;
     return ListView.separated(
       itemBuilder: (context, index) {
         if (index == 0) {

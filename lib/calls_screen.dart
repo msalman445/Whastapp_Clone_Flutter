@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/calls_list_view.dart';
 import 'package:whatsapp/calls_menu_anchor.dart';
 import 'package:whatsapp/updates_calls_appbar.dart';
-import 'package:whatsapp/updates_pop_up_menu.dart';
 
 class CallsScreen extends StatefulWidget {
   const CallsScreen({super.key});

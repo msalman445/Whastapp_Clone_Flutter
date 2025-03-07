@@ -4,14 +4,13 @@ import 'package:whatsapp/updates_calls_appbar.dart';
 import 'package:whatsapp/updates_pop_up_menu.dart';
 
 class UpdatesScreen extends StatelessWidget {
-  const UpdatesScreen({super.key, required this.title});
-  final String title;
+  const UpdatesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: UpdatesCallsAppbar(
-        title: title,
+        title: "Updates",
         isSearchIcon: true,
         moreOptions: UpdatesPopUpMenu(),
       ),

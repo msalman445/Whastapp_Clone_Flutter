@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/chats_list_view.dart';
-import 'package:whatsapp/custom_top_app_bar.dart';
+import 'package:whatsapp/chats_top_app_bar.dart';
 
 class ChatsScreen extends StatefulWidget {
   const ChatsScreen({super.key, required this.title});

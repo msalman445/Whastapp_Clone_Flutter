@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/custom_colors.dart';
 
 class UpdatesCallsAppbar extends StatefulWidget implements PreferredSizeWidget {
   const UpdatesCallsAppbar({
